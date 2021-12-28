@@ -24,7 +24,6 @@ int main() {
 
 	Fraction max = maximum(f1, f2);
 
-	template<typename T>
-	LinkedList<T> ll();
+	LinkedList<int> ll();
 	return 0;
 }
