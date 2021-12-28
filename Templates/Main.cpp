@@ -24,18 +24,42 @@ int main() {
 
 	Fraction max = maximum(f1, f2);
 
-	LinkedList<int> ll;
-	for (int i = 0; i < 11; i++)
+	LinkedList<int> intList;
+	for (int i = 0; i < 10; i++)
 	{
-		std::cout << "Adding " << i << " to the linked list" << std::endl;
-		std::cout << ll.getNoOfItems() << std::endl;
-		ll.addItem(i);
+		intList.addItem(i);
 	}
 
+	LinkedList<std::string> stringList;
+	stringList.addItem("Hello");
+	stringList.addItem("my");
+	stringList.addItem("name");
+	stringList.addItem("is");
+	stringList.addItem("Ross");
 
-	for(int i = 0; i < 11; i++)
+	LinkedList<double> doubleList;
+	doubleList.addItem(123.45342);
+	doubleList.addItem(32.5009089);
+	doubleList.addItem(1.3238978);
+
+
+	for(int i = 0; i < intList.getNoOfItems(); i++)
 	{
-		std::cout << i << ": " << ll[i] << std::endl;
+		std::cout << i << ": " << intList[i] << std::endl;
+	}
+
+	std::cout << "\n";
+
+	for (int i = 0; i < stringList.getNoOfItems(); i++)
+	{
+		std::cout << i << ": " << stringList[i] << std::endl;
+	}
+
+	std::cout << "\n";
+
+	for (int i = 0; i < doubleList.getNoOfItems(); i++)
+	{
+		std::cout << i << ": " << doubleList[i] << std::endl;
 	}
 	
 	return 0;

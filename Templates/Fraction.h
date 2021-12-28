@@ -4,7 +4,7 @@ class Fraction
 public:
 	Fraction(int numerator, int denominator);
 	~Fraction();
-	bool operator>(Fraction& rhs);
+	bool operator>(const Fraction& rhs) const;
 
 	int numerator;
 	int denominator;
