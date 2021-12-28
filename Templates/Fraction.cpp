@@ -8,8 +8,9 @@ Fraction::~Fraction() {
 
 }
 
-bool Fraction::operator>(Fraction& rhs) {
-	int tn1 = this->numerator * rhs.denominator;
-	int tn2 = rhs.numerator * this->denominator;
+bool Fraction::operator>(const Fraction& rhs) const
+{
+	const int tn1 = this->numerator * rhs.denominator;
+	const int tn2 = rhs.numerator * this->denominator;
 	return tn1 > tn2;
 }

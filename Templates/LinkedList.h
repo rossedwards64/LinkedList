@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include <memory>
 
 template<typename T>
 class LinkedList
@@ -73,5 +73,8 @@ T LinkedList<T>::operator[](int index) const
 		current = current->next;
 	}
 
-	return (current == nullptr ? 0 : current->data);
+	if (current == nullptr)
+		return 0;
+
+	return current->data;
 }

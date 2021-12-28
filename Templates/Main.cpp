@@ -11,6 +11,10 @@ T& maximum(T& a, T& b) {
 	return (a > b ? a : b);
 }
 
+typedef LinkedList<int> intList;
+typedef LinkedList<std::string> stringList;
+typedef LinkedList<double> doubleList;
+
 int main() {
 	_onexit(_CrtDumpMemoryLeaks);
 	int a = 2;
@@ -24,18 +28,42 @@ int main() {
 
 	Fraction max = maximum(f1, f2);
 
-	LinkedList<int> ll;
-	for (int i = 0; i < 11; i++)
+	intList ll1;
+	for (int i = 0; i < 10; i++)
 	{
-		std::cout << "Adding " << i << " to the linked list" << std::endl;
-		std::cout << ll.getNoOfItems() << std::endl;
-		ll.addItem(i);
+		ll1.addItem(i);
 	}
 
+	stringList ll2;
+	ll2.addItem("Hello");
+	ll2.addItem("my");
+	ll2.addItem("name");
+	ll2.addItem("is");
+	ll2.addItem("Ross");
 
-	for(int i = 0; i < 11; i++)
+	doubleList ll3;
+	ll3.addItem(123.45342);
+	ll3.addItem(32.5009089);
+	ll3.addItem(1.3238978);
+
+
+	for(int i = 0; i < ll1.getNoOfItems(); i++)
 	{
-		std::cout << i << ": " << ll[i] << std::endl;
+		std::cout << i << ": " << ll1[i] << std::endl;
+	}
+
+	std::cout << "\n";
+
+	for (int i = 0; i < ll2.getNoOfItems(); i++)
+	{
+		std::cout << i << ": " << ll2[i] << std::endl;
+	}
+
+	std::cout << "\n";
+
+	for (int i = 0; i < ll3.getNoOfItems(); i++)
+	{
+		std::cout << i << ": " << ll3[i] << std::endl;
 	}
 	
 	return 0;
