@@ -24,6 +24,19 @@ int main() {
 
 	Fraction max = maximum(f1, f2);
 
-	LinkedList<int> ll();
+	LinkedList<int> ll;
+	for (int i = 0; i < 11; i++)
+	{
+		std::cout << "Adding " << i << " to the linked list" << std::endl;
+		std::cout << ll.getNoOfItems() << std::endl;
+		ll.addItem(i);
+	}
+
+
+	for(int i = 0; i < 11; i++)
+	{
+		std::cout << i << ": " << ll[i] << std::endl;
+	}
+	
 	return 0;
 }

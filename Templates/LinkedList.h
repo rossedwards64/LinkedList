@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+
 template<typename T>
 class LinkedList
 {
@@ -8,11 +10,12 @@ public:
 
 	int getNoOfItems();
 	void addItem(T item);
-	const T operator[](const int index);
+	T operator[](int index) const;
 
 private:
 	template<typename R>
 	class LLNode {
+		friend class LinkedList;
 	public:
 		LLNode(R data) : data(data), next(nullptr) { }
 		int getNoOfItems();
@@ -20,10 +23,10 @@ private:
 
 	private:
 		R data;
-		LLNode<R>* next;
+		std::shared_ptr<LLNode<T>> next;
 	};
 
-	LLNode<T>* head;
+	std::shared_ptr<LLNode<T>> head;
 };
 
 template<typename T>
@@ -42,7 +45,7 @@ int LinkedList<T>::LLNode<R>::getNoOfItems() { return (next ? 1 + next->getNoOfI
 template<typename T>
 void LinkedList<T>::addItem(T item) {
 	if (head == nullptr) {
-		LLNode<T>* newNode = new LLNode(item);
+		std::shared_ptr<LLNode<T>> newNode = std::make_shared<LLNode<T>>(item);
 		head = newNode;
 	}
 	else {
@@ -54,14 +57,21 @@ template<typename T>
 template<typename R>
 void LinkedList<T>::LLNode<R>::addItem(R item) {
 	if (next == nullptr) {
-		next = new LLNode<R>(item);
+		next = std::make_shared<LLNode<R>>(item);
 	}
 	else {
-		next.addItem(item);
+		next->addItem(item);
 	}
 }
 
 template<typename T>
-const T LinkedList<T>::operator[](const int index) {
-	return ();
+T LinkedList<T>::operator[](int index) const
+{
+	std::shared_ptr<LLNode<T>> current = head;
+	while(current != nullptr && index-- > 0)
+	{
+		current = current->next;
+	}
+
+	return (current == nullptr ? 0 : current->data);
 }
