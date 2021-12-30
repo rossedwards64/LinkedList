@@ -14,10 +14,11 @@ public:
 
 private:
 	template<typename R>
-	class LLNode {
+	class LLNode
+	{
 		friend class LinkedList;
 	public:
-		LLNode(R data) : data(data), next(nullptr) { }
+		explicit LLNode(R data) : data(data), next(nullptr) { }
 		int getNoOfItems();
 		void addItem(R item);
 
@@ -33,7 +34,7 @@ template<typename T>
 LinkedList<T>::LinkedList() : head(nullptr) {};
 
 template<typename T>
-LinkedList<T>::~LinkedList() {}
+LinkedList<T>::~LinkedList() = default;
 
 template<typename T>
 int LinkedList<T>::getNoOfItems() { return (head ? head->getNoOfItems() : 0); }
@@ -44,11 +45,13 @@ int LinkedList<T>::LLNode<R>::getNoOfItems() { return (next ? 1 + next->getNoOfI
 
 template<typename T>
 void LinkedList<T>::addItem(T item) {
-	if (head == nullptr) {
+	if (head == nullptr) 
+	{
 		std::shared_ptr<LLNode<T>> newNode = std::make_shared<LLNode<T>>(item);
 		head = newNode;
 	}
-	else {
+	else 
+	{
 		head->addItem(item);
 	}
 }
@@ -56,10 +59,12 @@ void LinkedList<T>::addItem(T item) {
 template<typename T>
 template<typename R>
 void LinkedList<T>::LLNode<R>::addItem(R item) {
-	if (next == nullptr) {
+	if (next == nullptr) 
+	{
 		next = std::make_shared<LLNode<R>>(item);
 	}
-	else {
+	else 
+	{
 		next->addItem(item);
 	}
 }

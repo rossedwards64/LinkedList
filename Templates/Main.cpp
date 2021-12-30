@@ -1,7 +1,8 @@
-#include <iostream>
 #include <crtdbg.h>
+#include <iostream>
 #include "Fraction.h"
 #include "LinkedList.h"
+#include "Pair.h"
 
 template<typename T>
 T& maximum(T& a, T& b);
@@ -15,7 +16,11 @@ typedef LinkedList<int> intList;
 typedef LinkedList<std::string> stringList;
 typedef LinkedList<double> doubleList;
 
-int main() {
+typedef Pair<int, std::string> intStringPair;
+typedef Pair<std::string, double> stringDoublePair;
+
+int main()
+{
 	_onexit(_CrtDumpMemoryLeaks);
 	int a = 2;
 	std::cout << a << std::endl;
@@ -47,7 +52,7 @@ int main() {
 	ll3.addItem(1.3238978);
 
 
-	for(int i = 0; i < ll1.getNoOfItems(); i++)
+	for (int i = 0; i < ll1.getNoOfItems(); i++)
 	{
 		std::cout << i << ": " << ll1[i] << std::endl;
 	}
@@ -65,6 +70,31 @@ int main() {
 	{
 		std::cout << i << ": " << ll3[i] << std::endl;
 	}
-	
+
+	intStringPair names;
+	names.addItem(1, "Ross");
+	names.addItem(2, "Grace");
+	names.addItem(3, "Matty");
+	names.addItem(4, "Danny");
+
+	stringDoublePair food;
+	food.addItem("Banana", 0.45);
+	food.addItem("Donuts", 1.99);
+	food.addItem("Cookies", 1.50);
+	food.addItem("Ramen", 9.50);
+
+	std::cout << "\n";
+
+	for (int i = 0; i < names.getNoOfItems(); i++)
+	{
+		std::cout << i << ": " << names[i] << std::endl;
+	}
+
+	std::cout << "\n";
+
+	for(int i = 0; i < food.getNoOfItems(); i++)
+	{
+		std::cout << i << ": " << food[i] << std::endl;
+	}
 	return 0;
 }
